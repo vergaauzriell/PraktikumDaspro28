@@ -1,4 +1,4 @@
-impott java.util.Scanner;
+import java.util.Scanner;
 
 public class StudiKasus228 {
     
@@ -6,8 +6,8 @@ public class StudiKasus228 {
         
         Scanner sc = new Scanner(System.in);
         
-        Sting nama, jenisKegiatan;
-        int dokumen, juara, statusPKM;
+        String nama, jenisKegiatan;
+        int dokumen, juara, statusPKM, kurang;
 
         System.out.print("Masukkan nama mahasiswa: ");
         nama = sc.nextLine();
@@ -32,9 +32,24 @@ public class StudiKasus228 {
                 juara = sc.nextInt();
             }
 
-            
-        }
-        
-        sc.close();
-    }
+        if(dokumen<4) {
+            kurang = 4 - dokumen;
+            System.out.println("Status: Tidak memperoleh dana. Kekurangan dokumen: " + kurang);
+        } else {
+            if(jenisKegiatan.equalsIgnoreCase("PKM") && statusPKM == 1) {
+                System.out.println("Status: Memperoleh dana.");
+            } else if(!jenisKegiatan.equalsIgnoreCase("PKM") && juara > 0) {
+                System.out.println("Status: Memperoleh dana.");
+            } else {
+                System.out.println("Status: Tidak memperoleh dana.");
+            }
+            if(juara > 0 && juara <= 3) {
+                System.out.println("Status: Memperoleh dana.");
+            } else {
+                System.out.println("Status: Tidak memperoleh dana.");
+
+            }
+        } 
+    } 
+} 
 }
